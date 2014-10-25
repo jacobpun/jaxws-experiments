@@ -64,10 +64,9 @@ public class ProductService {
 
 	public boolean addProduct(String category, String product)
 			throws InvalidInputException {
-		List<Product> productList = getProducts(category);
 		double DEFAUT_PRICE = 0.0;
-		productList.add(new Product(product, product, DEFAUT_PRICE));
-		return true;
+		return addProductv2(category, new Product(product, product,
+				DEFAUT_PRICE));
 	}
 
 	public boolean addProductv2(String category, Product product)
