@@ -10,6 +10,7 @@ import javax.jws.soap.SOAPBinding;
 import javax.jws.soap.SOAPBinding.Style;
 
 import org.punnoose.jaswsdemo.model.Product;
+import org.punnoose.jaswsdemo.service.InvalidInputException;
 
 @WebService(name = "TestMartCatalog", targetNamespace = "http://testmart.punnoose.org")
 @SOAPBinding(style = Style.DOCUMENT)
@@ -22,14 +23,17 @@ public interface ProductCatalog {
 	@WebResult(name = "Success")
 	public abstract boolean addProduct(
 			@WebParam(name = "Category") String category,
-			@WebParam(name = "Product") String product);
+			@WebParam(name = "Product") String product)
+			throws InvalidInputException;
 
 	@WebResult(name = "Product")
 	public abstract List<Product> getProducsv2(
-			@WebParam(name = "Category") String category);
+			@WebParam(name = "Category") String category)
+			throws InvalidInputException;
 
 	@WebResult(name = "Success")
 	public abstract boolean addProductv2(
 			@WebParam(name = "Category") String category,
-			@WebParam(name = "Product") Product product);
+			@WebParam(name = "Product") Product product)
+			throws InvalidInputException;
 }
